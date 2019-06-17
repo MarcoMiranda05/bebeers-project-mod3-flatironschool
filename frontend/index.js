@@ -10,6 +10,7 @@ addBtn.addEventListener('click', () => {
     addBeer = !addBeer
     if (addBeer) {
       beerForm.style.display = 'block'
+      
       addBeerForm.addEventListener("submit", postBeerToServer)
     } else {
       beerForm.style.display = 'none'

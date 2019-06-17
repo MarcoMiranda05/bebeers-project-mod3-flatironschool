@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :current_user, only: [:show, :edit, :update, :destroy]
+    
 
     def index
         users = User.all
@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     end
 
     def show
+        user = User.find_by(params[:id])
 
         render json: user
     end
@@ -24,10 +25,12 @@ class UsersController < ApplicationController
     end
 
     def edit
+        user = User.find_by(params[:id])
 
     end
 
     def update
+        user = User.find_by(params[:id])
 
         user.update(user_params)
 
@@ -35,6 +38,7 @@ class UsersController < ApplicationController
     end
 
     def destroy
+        user = User.find_by(params[:id])
 
         user.destroy
 
@@ -47,7 +51,4 @@ class UsersController < ApplicationController
         params.require(:user).permit(:username)
     end
 
-    def current_user
-        user = User.find_by(id: params[:id])
-    end
 end

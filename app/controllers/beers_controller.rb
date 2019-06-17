@@ -1,16 +1,33 @@
 class BeersController < ApplicationController
-    before_action :current_beer, only: [:show, :edit, :update]
+    
 
 
     def index
-        beers = Beers.all
+        beers = Beer.all
 
-        render json: beers
+        render json: beers, include: [
+            {
+                :reviews => { 
+                    except: [:id, :beer_id, :created_at, :updated_at]
+                }
+            }
+        ]
     end
 
     def show
+        beer =  Beer.find(params[:id])
 
-        render json: beer
+        render json: beer, include: [
+            {
+                :reviews => { 
+                    except: [:id, :beer_id, :created_at, :updated_at]
+                }
+            }
+        ]
+            
+
+
+            
     end
 
     def new
@@ -25,10 +42,13 @@ class BeersController < ApplicationController
     end
 
     def edit
+        beer =  Beer.find(params[:id])
+
       
     end
 
     def update
+        beer =  Beer.find(params[:id])
 
         beer.update(beer_params)
 
@@ -42,7 +62,5 @@ class BeersController < ApplicationController
         
     end
 
-    def current_beer
-      beer =  Beer.find(:id params[:id])
-    end
+   
 end

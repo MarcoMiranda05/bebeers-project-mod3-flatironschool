@@ -1,7 +1,7 @@
 const addBtn = document.getElementById('new-beer-button')
 const   beerForm = document.querySelector('.container')
 let addBeer = false
-const beerFormSubmit = document.getElementById('beer-form-submit')
+const addBeerForm = document.getElementById('add-beer-form')
 
 
 
@@ -10,9 +10,9 @@ addBtn.addEventListener('click', () => {
     addBeer = !addBeer
     if (addBeer) {
       beerForm.style.display = 'block'
-      beerFormSubmit.addEventListener("submit", postBeerToServer)
+      addBeerForm.addEventListener("submit", postBeerToServer)
     } else {
       beerForm.style.display = 'none'
-      beerFormSubmit.removeEventListener("submit", postBeerToServer)
+      addBeerForm.removeEventListener("submit", postBeerToServer)
     }
   })

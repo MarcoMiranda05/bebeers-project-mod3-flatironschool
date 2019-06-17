@@ -4,6 +4,7 @@ class CreateBeers < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :brewery
       t.references :country, foreign_key: true
+      t.string :style
       t.text :notes
       t.integer :abv
       t.string :image

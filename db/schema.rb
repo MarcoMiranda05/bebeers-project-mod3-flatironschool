@@ -10,18 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_17_103442) do
+ActiveRecord::Schema.define(version: 2019_06_17_121344) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "beers", force: :cascade do |t|
     t.string "name"
     t.string "brewery"
-    t.integer "country_id"
+    t.bigint "country_id"
+    t.string "style"
     t.text "notes"
     t.integer "abv"
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "style"
     t.index ["country_id"], name: "index_beers_on_country_id"
   end
 
@@ -32,8 +35,8 @@ ActiveRecord::Schema.define(version: 2019_06_17_103442) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "beer_id"
-    t.integer "user_id"
+    t.bigint "beer_id"
+    t.bigint "user_id"
     t.text "review"
     t.float "rating"
     t.datetime "created_at", null: false
@@ -48,4 +51,7 @@ ActiveRecord::Schema.define(version: 2019_06_17_103442) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "beers", "countries"
+  add_foreign_key "reviews", "beers"
+  add_foreign_key "reviews", "users"
 end

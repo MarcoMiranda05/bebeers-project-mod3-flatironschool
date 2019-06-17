@@ -4,6 +4,7 @@ one:
   name: MyString
   brewery: MyString
   country: one
+  style: MyString
   notes: MyText
   abv: 1
   image: MyString
@@ -12,6 +13,7 @@ two:
   name: MyString
   brewery: MyString
   country: two
+  style: MyString
   notes: MyText
   abv: 1
   image: MyString

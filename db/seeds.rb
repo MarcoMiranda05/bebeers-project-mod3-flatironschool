@@ -59,7 +59,7 @@ beers = Beer.create([
   style: "IPA"},
   {name:"Red Trolley",
   brewery: "Karl Strauss",
-  country_id: ,
+  country_id: 4,
   notes: "Brewed with a half ton of caramelized malts, this bold red ale has caramel and toffee flavors, notes of dried raisins and currants, and a slightly sweet finish.",
   abv: 5.8,
   image: "https://www.totalwine.com/media/sys_master/twmmedia/h7a/hc7/9340610674718.png",
@@ -88,7 +88,7 @@ beers = Beer.create([
   {name:"Beck's",
   brewery: "AB InBev",
   country_id: 5,
-  notes: "Classic German lager beer with a distinctive full-bodied taste, fresh "hoppy" bouquet, golden color and full rich head. Adding to its complexity is a slightly fruity but firm crispness and a dry, clean finish.",
+  notes: "Classic German lager beer with a distinctive full-bodied taste, fresh 'hoppy' bouquet, golden color and full rich head. Adding to its complexity is a slightly fruity but firm crispness and a dry, clean finish.",
   abv: 4.8,
   image: "https://www.stickpng.com/assets/images/585e639ecb11b227491c33ff.png",
   style: "Lager"},
@@ -105,7 +105,7 @@ beers = Beer.create([
   notes: "First brewed at Bosteels, transfered to the Champagne region of France were it is treated much like a champagne with the bottles inverted and the yeast expunged and bottle recorked.",
   abv: 11.5,
   image: "https://applejack.com/site/images/Deus-Brut-Des-Flandres-750-ml-Bottle_1.png",
-  style: "Belgian Ale"},
+  style: "Belgian Ale"}
 ])
 
 reviews = Review.create([

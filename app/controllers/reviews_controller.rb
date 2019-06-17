@@ -1,50 +1,11 @@
 class ReviewsController < ApplicationController
-<<<<<<< HEAD
-
-    def index
-        review = Review.all
-        render json: review, include: [:beer, :user]
-    end
-
-    def show    
-       review = Review.find_by(id: params[:id])
-        render json: review, include: [:beer, :user]
-    end
-
-    def new
-        review = Review.new
-        
-    end
-
-    def create
-        review = Review.create( review_params)
-
-        render json: review
-        
-    end
-
-    def edit
-        review = Review.find_by(params[:id])
-        
-    end
-
-    private
-
-    def review_params 
-        params.require(:review).permit(:beer, :user, :reviews, :ratings)
-        
-    end
-
-    
-end
-=======
   def index
       review = Review.all
-      render json: review, include: [:beer, :user]
+      render json: review
   end
   def show    
-     review = Review.find_by(id: params[:id])
-      render json: review, include: [:beer, :user]
+     review = Review.find(params[:id])
+      render json: review
   end
   def new
       review = Review.new
@@ -56,7 +17,7 @@ end
       
   end
   def edit
-      review = Review.find_by(params[:id])
+      review = Review.find(params[:id])
       
   end
   private
@@ -66,4 +27,3 @@ end
   end
   
 end
->>>>>>> 0b670917176a2ab42880169b193f70ad169d6ae0

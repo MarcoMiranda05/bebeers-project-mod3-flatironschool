@@ -3,15 +3,15 @@
 one:
   name: MyString
   brewery: MyString
-  country_id: 1
-  description: MyText
-  abv: 1.5
+  country: one
+  notes: MyText
+  abv: 1
   image: MyString
 
 two:
   name: MyString
   brewery: MyString
-  country_id: 1
-  description: MyText
-  abv: 1.5
+  country: two
+  notes: MyText
+  abv: 1
   image: MyString

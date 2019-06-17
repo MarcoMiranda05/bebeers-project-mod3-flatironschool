@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_17_121344) do
+ActiveRecord::Schema.define(version: 2019_06_17_134440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,13 +19,14 @@ ActiveRecord::Schema.define(version: 2019_06_17_121344) do
     t.string "name"
     t.string "brewery"
     t.bigint "country_id"
-    t.string "style"
     t.text "notes"
     t.integer "abv"
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "style_id"
     t.index ["country_id"], name: "index_beers_on_country_id"
+    t.index ["style_id"], name: "index_beers_on_style_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -45,6 +46,12 @@ ActiveRecord::Schema.define(version: 2019_06_17_121344) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "styles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.datetime "created_at", null: false
@@ -52,6 +59,7 @@ ActiveRecord::Schema.define(version: 2019_06_17_121344) do
   end
 
   add_foreign_key "beers", "countries"
+  add_foreign_key "beers", "styles"
   add_foreign_key "reviews", "beers"
   add_foreign_key "reviews", "users"
 end

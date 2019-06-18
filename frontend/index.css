@@ -32,3 +32,8 @@ body {
     height: 12rem;
     width: auto;
 }
+
+.search-bar {
+    justify-self: center;
+    text-align: center;
+}

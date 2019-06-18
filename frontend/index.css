@@ -3,6 +3,9 @@ body {
     margin: 0;
     padding: 10px;
     font-family: monospace;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 
 .container {
@@ -13,8 +16,10 @@ body {
 }
    
 #beer-collection {
-    justify-content: center;
     margin: 2rem;
+    display: inline-block;
+    text-align: center;
+    justify-self: center;
 }
 
 .beer-card {
@@ -52,4 +57,24 @@ body {
 .logo {
     height: 7rem;
   padding: 1rem;
+}
+
+.beer-render-div {
+    flex-basis: 50%;
+    flex-grow: 1;
+    border: grey solid 1px;
+    padding: 1rem;
+    width: 900px;
+    height: auto;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.beer-image-single-render {
+    height: 15rem;
+    width: auto;
+    display: block;
+    float: left;
 }

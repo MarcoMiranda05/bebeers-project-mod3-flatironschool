@@ -91,26 +91,29 @@ function renderBeer(beer){
   let beerDiv = document.createElement('div')
       beerDiv.className = "beer-render-div"
 
+  let beerImageDiv = document.createElement('div')
+      
   let beerImg = document.createElement('img')
-      beerImg.className = "beer-render-div"
       beerImg.src = beer.image
+      beerImg.className = "beer-image-single-render"
+      beerImageDiv.append(beerImg)
 
   let beerName = document.createElement('h2')
       beerName.innerText = beer.name
 
   let beerNotes = document.createElement('p')
-      beerNotes.innerText = beer.notes
+      beerNotes.innerText = `Notes: ${beer.notes}`
 
-  let beerCountry = document.createElement('h3')
-      beerCountry.innerText = beer.country.name
+  let beerCountry = document.createElement('p')
+      beerCountry.innerText = `${beer.brewery} - ${beer.country.name}`
 
   let beerStyle = document.createElement('p')
       beerStyle.innerText = `Style: ${beer.style.name}`
 
-  let beerBrewery = document.createElement('p')
-      beerBrewery.innerText = ` Brewery: ${beer.brewery}`
+  // let beerBrewery = document.createElement('p')
+  //     beerBrewery.innerText = `Brewery: ${beer.brewery}`
 
-  beerDiv.append(beerImg, beerName, beerCountry, beerBrewery, beerStyle, beerNotes )
+  beerDiv.append(beerImageDiv, beerName, beerCountry, beerStyle, beerNotes )
   beerRenderDiv.append(beerDiv)
 }
 

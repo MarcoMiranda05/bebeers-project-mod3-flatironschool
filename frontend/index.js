@@ -1,11 +1,12 @@
 const addBtn = document.getElementById('new-beer-button')
 const   beerForm = document.querySelector('.container')
 let addBeer = false
-const addBeerForm = document.getElementById('add-beer-form')
+const addBeerForm = document.querySelector('.add-beer-form')
 const BEER_URL = "http://localhost:3000/beers/";
 const COUNTRY_URL = "http://localhost:3000/countries/";
 const beerCollection = document.querySelector("#beer-collection")
-
+let formStyle = document.querySelector('#menu-style-selectors')
+let formCountries = document.querySelector('#menu-countries-selectors')
 
 
 //event listener to show/hide the form and add/remove event listener
@@ -50,10 +51,57 @@ function showBeers(beersArray) {
   });
 }
 
+//rendering countries to form
+  
+ fetch(COUNTRY_URL)
+  .then(data => data.json())
+  .then(countriesArray)
+  
+// iterating over countries array and passing into form
+function countriesArray(array){
+ array.forEach( country => {
+    let countryOption = document.createElement('option')
+        countryOption.innerText = country.name
+        countryOption.dataset.id = country.id
+        formCountries.appendChild(countryOption)
+      })
+  }
+
+
+
+
+
+
+
+
+function postBeerToServer(event){
+  event.preventDefault()
+  fetch(BEER_URL, {
+    method: "POST", 
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      name: addBeerForm[0].value,
+      image: addBeerForm[1].value,
+      brewery: addBeerForm[2].value,
+      notes: addBeerForm[3].value,
+      abv: addBeerForm[4].value,
+      style: addBeerForm[5].value,
+      country_id: addBeerForm[6].value
+    })
+  }).then(addBeerForm.reset())
+    .then(init)
+}
+
+
+
+
 function init() {
   fetch(BEER_URL)
   .then(data => data.json())
   .then(showBeers);
 }
 
-init();
+init()

@@ -1,6 +1,7 @@
 
 body {
     margin: 0;
+    padding: 10px;
     font-family: monospace;
   }
 
@@ -36,4 +37,14 @@ body {
 .search-bar {
     justify-self: center;
     text-align: center;
+}
+
+.login-signup {
+    float: right;
+    display: block;
+}
+
+.sign-in {
+    float: right;
+    display: none;
 }

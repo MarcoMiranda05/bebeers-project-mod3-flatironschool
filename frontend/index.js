@@ -15,6 +15,9 @@ const beerCollection = document.querySelector("#beer-collection")
 let formStyle = document.querySelector('#menu-style-selectors')
 let formCountries = document.querySelector('#menu-countries-selectors')
 
+
+
+
 /// event listener to show/hide login field
 loginBtn.addEventListener('click', () => {
   loginUser = !loginUser
@@ -41,6 +44,7 @@ addBtn.addEventListener('click', () => {
   }
 })
 
+// beer card
 function makeBeerCard(beer) {
   const div = document.createElement("div");
   div.className = "beer-card";
@@ -57,18 +61,64 @@ function makeBeerCard(beer) {
   brewery.innerText = `Brewery: ${beer.brewery}`;
 
   const viewButton = document.createElement("button")
+        viewButton.className = "beer-button"
   viewButton.innerText = "More Details"
 
   div.append(name, image, brewery, viewButton)
   beerCollection.append(div); 
+
+ viewButton.addEventListener('click', () => renderBeer(beer)) 
 }
 
+
+// render all beers
 function showBeers(beersArray) {
   beerCollection.innerHTML = ""
   beersArray.map(beer => {
     makeBeerCard(beer);
   });
 }
+
+
+
+// render one beer information
+function renderBeer(beer){
+  console.log('clicked', beer)
+
+  const beerRenderDiv = document.querySelector('#render-beer')
+        beerRenderDiv.innerHTML = ""
+
+  let beerDiv = document.createElement('div')
+      beerDiv.className = "beer-render-div"
+
+  let beerImg = document.createElement('img')
+      beerImg.className = "beer-render-div"
+      beerImg.src = beer.image
+
+  let beerName = document.createElement('h2')
+      beerName.innerText = beer.name
+
+  let beerNotes = document.createElement('p')
+      beerNotes.innerText = beer.notes
+
+  let beerCountry = document.createElement('h3')
+      beerCountry.innerText = beer.country.name
+
+  let beerStyle = document.createElement('p')
+      beerStyle.innerText = `Style: ${beer.style.name}`
+
+  let beerBrewery = document.createElement('p')
+      beerBrewery.innerText = ` Brewery: ${beer.brewery}`
+
+  beerDiv.append(beerImg, beerName, beerCountry, beerBrewery, beerStyle, beerNotes )
+  beerRenderDiv.append(beerDiv)
+}
+
+
+
+
+
+
 
 //rendering countries to form
   
@@ -136,7 +186,7 @@ function postBeer(e) {
 
 
 
-// connectios to the server
+// connections to the server
 function postBeerToServer(beer) {
   return fetch(BEER_URL, {
     method: "POST",
@@ -147,30 +197,8 @@ function postBeerToServer(beer) {
   });
 }
 
-// function postBeerToServer(event){
-//   event.preventDefault()
-//   fetch(BEER_URL, {
-//     method: "POST", 
-//     headers: {
-//       "Content-Type": "application/json",
-//       "Accept": "application/json"
-//     },
-//     body: JSON.stringify({
-//       name: addBeerForm[0].value,
-//       image: addBeerForm[1].value,
-//       brewery: addBeerForm[2].value,
-//       notes: addBeerForm[3].value,
-//       abv: addBeerForm[4].value,
-//       style: addBeerForm[5].value,
-//       country_id: addBeerForm[6].value
-//     })
-//   }).then(addBeerForm.reset())
-//     .then(init)
-// }
 
-
-
-
+// initialize page
 
 function init() {
   fetch(BEER_URL)

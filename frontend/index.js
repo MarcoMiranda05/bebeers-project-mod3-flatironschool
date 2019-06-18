@@ -4,6 +4,8 @@ let addBeer = false
 const addBeerForm = document.querySelector('.add-beer-form')
 const BEER_URL = "http://localhost:3000/beers/";
 const COUNTRY_URL = "http://localhost:3000/countries/";
+const STYLES_URL = "http://localhost:3000/styles/";
+const USERS_URL = "http://localhost:3000/users/";
 const beerCollection = document.querySelector("#beer-collection")
 let formStyle = document.querySelector('#menu-style-selectors')
 let formCountries = document.querySelector('#menu-countries-selectors')
@@ -65,9 +67,23 @@ function countriesArray(array){
         countryOption.dataset.id = country.id
         formCountries.appendChild(countryOption)
       })
-  }
+}
 
+//rendering styles to form
+  
+fetch(STYLES_URL)
+.then(data => data.json())
+.then(stylesArray)
 
+// iterating over styles array and passing into form
+function stylesArray(array){
+array.forEach( styles => {
+  let stylesOption = document.createElement('option')
+      stylesOption.innerText = styles.name
+      stylesOption.dataset.id = styles.id
+      formStyle.appendChild(stylesOption)
+    })
+}
 
 
 

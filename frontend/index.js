@@ -125,12 +125,13 @@ function postBeerToServer(event){
       abv: addBeerForm[4].value,
       style: addBeerForm[5].value,
       country_id: addBeerForm[6].value
+     
     })
   }).then(addBeerForm.reset())
     .then(init)
 }
 
-
+ console.log(addBeerForm[6].options.attributes)
 
 
 function init() {

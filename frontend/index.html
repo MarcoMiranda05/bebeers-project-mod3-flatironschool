@@ -12,18 +12,20 @@
 </head>
 <body>
   <style> body { background-image: url("https://www.pixelstalk.net/wp-content/uploads/2016/07/Beer-Photos.jpg");} </style>
-    <div class="nav-bar">
-        <div class="search">
-          <nav class="navbar navbar-light bg-light justify-content-between">
-            <a class="navbar-brand">BeBeers</a>
-            <form class="form-inline">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <div>
+        <div >
+          <nav>
+            <a>BeBeers</a>
+            <button class="login-signup" id="signup-btn">Sign Up</button>
+            <button class="login-signup" id="login-btn">Login</button>
+            <form class="sign-in">
+                <input type="search" placeholder="username" aria-label="username">
+                <button type="submit">Login</button>
             </form>
-          </nav>              
+          </nav>      
         </div>
 
-        <div class="headers">
+        <div class="headers" style="float: center">
           <ul class="nav justify-content-center">
             <li class="nav-item">
               <a class="nav-link active" href="#">All Beers</a>
@@ -39,6 +41,13 @@
             </li>
           </ul>
         </div>
+        <div class="search-bar">
+          <form>
+              <input type="search" placeholder="Search" aria-label="Search">
+              <button type="submit">Search</button>
+          </form>
+        </div>
+        
     </div>
     <!-- form -->
     <div class="container">

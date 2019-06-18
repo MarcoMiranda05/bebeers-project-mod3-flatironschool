@@ -28,18 +28,16 @@ loginBtn.addEventListener('click', () => {
   }
 })
 
-
-
 //event listener to show/hide the form and add/remove event listener
 addBtn.addEventListener('click', () => {
   addBeer = !addBeer
   if (addBeer) {
     beerForm.style.display = 'block'
     
-    addBeerForm.addEventListener("submit", postBeerToServer)
+    addBeerForm.addEventListener("submit", postBeer)
   } else {
     beerForm.style.display = 'none'
-    addBeerForm.removeEventListener("submit", postBeerToServer)
+    addBeerForm.removeEventListener("submit", postBeer)
   }
 })
 
@@ -83,7 +81,7 @@ function countriesArray(array){
  array.forEach( country => {
     let countryOption = document.createElement('option')
         countryOption.innerText = country.name
-        countryOption.dataset.id = country.id
+        countryOption.value = country.id
         formCountries.appendChild(countryOption)
       })
 }
@@ -96,42 +94,82 @@ fetch(STYLES_URL)
 
 // iterating over styles array and passing into form
 function stylesArray(array){
-array.forEach( styles => {
+array.forEach( style => {
   let stylesOption = document.createElement('option')
-      stylesOption.innerText = styles.name
-      stylesOption.dataset.id = styles.id
+      stylesOption.innerText = style.name
+      stylesOption.value = style.id
       formStyle.appendChild(stylesOption)
     })
 }
 
+// create a beer
+
+function postBeer(e) {
+  // debugger
+  e.preventDefault();
+  const target = e.target
+  const beer = {
+    name: addBeerForm[0].value,
+    image: addBeerForm[1].value,
+    brewery: addBeerForm[2].value,
+    notes: addBeerForm[3].value,
+    abv: addBeerForm[4].value,
+    style_id: addBeerForm[5].value,
+    country_id: addBeerForm[6].value
+  };
 
 
+  postBeerToServer(beer)
 
-
-
-function postBeerToServer(event){
-  event.preventDefault()
-  fetch(BEER_URL, {
-    method: "POST", 
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    body: JSON.stringify({
-      name: addBeerForm[0].value,
-      image: addBeerForm[1].value,
-      brewery: addBeerForm[2].value,
-      notes: addBeerForm[3].value,
-      abv: addBeerForm[4].value,
-      style: addBeerForm[5].value,
-      country_id: addBeerForm[6].value
-     
-    })
-  }).then(addBeerForm.reset())
-    .then(init)
+    .then(beerData => beerData.json())
+    // .then(data => {
+    //   console.log(data);
+    //   return data;
+    // })
+    .then(beer => {
+      makeBeerCard(beer)
+      addBeerForm.reset()
+    });
+  
 }
 
- console.log(addBeerForm[6].options.attributes)
+
+
+
+// connectios to the server
+function postBeerToServer(beer) {
+  return fetch(BEER_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(beer)
+  });
+}
+
+// function postBeerToServer(event){
+//   event.preventDefault()
+//   fetch(BEER_URL, {
+//     method: "POST", 
+//     headers: {
+//       "Content-Type": "application/json",
+//       "Accept": "application/json"
+//     },
+//     body: JSON.stringify({
+//       name: addBeerForm[0].value,
+//       image: addBeerForm[1].value,
+//       brewery: addBeerForm[2].value,
+//       notes: addBeerForm[3].value,
+//       abv: addBeerForm[4].value,
+//       style: addBeerForm[5].value,
+//       country_id: addBeerForm[6].value
+//     })
+//   }).then(addBeerForm.reset())
+//     .then(init)
+// }
+
+
+
 
 
 function init() {

@@ -32,3 +32,11 @@ body {
     height: 12rem;
     width: auto;
 }
+
+.footer {
+    position: absolute;
+    background-color: white;
+    position: relative;
+    height: 50px;
+}
+

@@ -30,6 +30,7 @@ function makeBeerCard(beer) {
   div.dataset.id = beer.id;
 
   const name = document.createElement("h2");
+  name.className = "beer-name"
   name.innerText = beer.name;
 
   const image = document.createElement("img");
@@ -45,6 +46,10 @@ function makeBeerCard(beer) {
   div.append(name, image, brewery, viewButton)
   beerCollection.append(div); 
 }
+
+
+
+
 
 function showBeers(beersArray) {
   beerCollection.innerHTML = ""
@@ -84,8 +89,6 @@ array.forEach( styles => {
       formStyle.appendChild(stylesOption)
     })
 }
-
-
 
 
 

@@ -1,6 +1,34 @@
+
+body {
+    margin: 0;
+    font-family: monospace;
+  }
+
 .container {
     padding: 1rem;
     width: stretch;
     height: auto;
     display: none;
-   }
+}
+   
+#beer-collection {
+    justify-content: center;
+    margin: 2rem;
+}
+
+.beer-card {
+    justify-self: center;
+    text-align: center;
+    border: grey solid 1px;
+    padding: 1rem;
+    width: 15rem;
+    height: 25rem;
+    display: inline-grid;
+    margin: 1rem 2rem;
+}
+  
+.beer-image {
+    justify-self: center;
+    height: 12rem;
+    width: auto;
+}

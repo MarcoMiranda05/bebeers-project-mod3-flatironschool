@@ -4,6 +4,8 @@ let addBeer = false
 const addBeerForm = document.getElementById('add-beer-form')
 const BEER_URL = "http://localhost:3000/beers/";
 const COUNTRY_URL = "http://localhost:3000/countries/";
+const STYLES_URL = "http://localhost:3000/styles/";
+const USERS_URL = "http://localhost:3000/users/";
 const beerCollection = document.querySelector("#beer-collection")
 
 

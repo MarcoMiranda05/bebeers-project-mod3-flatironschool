@@ -83,7 +83,7 @@ function showBeers(beersArray) {
 
 // render one beer information
 function renderBeer(beer){
-  console.log('clicked', beer)
+  
 
   const beerRenderDiv = document.querySelector('#render-beer')
         beerRenderDiv.innerHTML = ""
@@ -110,10 +110,10 @@ function renderBeer(beer){
   let beerStyle = document.createElement('p')
       beerStyle.innerText = `Style: ${beer.style.name}`
 
-  // let beerBrewery = document.createElement('p')
-  //     beerBrewery.innerText = `Brewery: ${beer.brewery}`
+   let beerBrewery = document.createElement('p')
+       beerBrewery.innerText = `Brewery: ${beer.brewery}`
 
-  beerDiv.append(beerImageDiv, beerName, beerCountry, beerStyle, beerNotes )
+  beerDiv.append(beerImageDiv, beerName, beerCountry, beerBrewery, beerStyle, beerNotes )
   beerRenderDiv.append(beerDiv)
 }
 

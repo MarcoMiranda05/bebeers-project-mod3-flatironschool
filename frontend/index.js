@@ -4,8 +4,10 @@ let addBeer = false
 const loginBtn = document.getElementById('login-btn')
 const signupBtn = document.getElementById('signup-btn')
 const loginForm = document.querySelector('.sign-in')
+const signinForm = document.querySelector('.sign-up')
 const loginSignupBtns = document.getElementsByClassName('login-signup')
 let loginUser = false
+let signupUser = false
 const addBeerForm = document.querySelector('.add-beer-form')
 const BEER_URL = "http://localhost:3000/beers/";
 const COUNTRY_URL = "http://localhost:3000/countries/";
@@ -24,12 +26,29 @@ loginBtn.addEventListener('click', () => {
   if (loginUser) {
     loginForm.style.display = 'block'
     loginBtn.style.display = 'none'
-    signupBtn.style.display = 'none'
+    signupBtn.style.display = 'block'
+    signinForm.style.display = 'none'
     
   } else {
     loginForm.style.display = 'none'
   }
 })
+
+
+
+// event listener to show/hide sign up field
+signupBtn.addEventListener('click', () => {
+  signupUser = !signupUser
+  if (signupUser) {
+    signinForm.style.display = 'block'
+    signupBtn.style.display = 'none'
+    loginBtn.style.display = 'block'
+    loginForm.style.display = 'none'
+  } else {
+    signinForm.style.display = 'none'
+  }
+})
+
 
 //event listener to show/hide the form and add/remove event listener
 addBtn.addEventListener('click', () => {

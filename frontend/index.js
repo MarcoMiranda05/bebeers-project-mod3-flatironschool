@@ -239,19 +239,22 @@ function renderBeer(beer){
       reviewCollection.className = "review-collection"
       reviewCollection.style.display = "none"
 
-  let reviewCard = document.createElement('div')
+  
       beer.reviews.forEach(review => {
+        let reviewCard = document.createElement('div')
+        reviewCard.className = "review-card"
         let rating = document.createElement('P')
         rating.innerText = `Rating: ${review.rating}`
         let pReview = document.createElement('p')
         pReview.innerText = `Review ${review.review}`
         reviewCard.append(rating, pReview)
+        reviewCollection.append(reviewCard)
        
   })
   
   let addReviewBtn = document.createElement('button')
   addReviewBtn.innerText = 'Add Review'
-  reviewCollection.append(reviewCard, addReviewBtn)
+  reviewCollection.append(addReviewBtn)
 
   let reviewForm = document.createElement('form')
   

@@ -131,3 +131,8 @@ body {
     content: "\f005 \f005 \f005 \f005 \f005";
     color: #f8ce0b;
   }
+
+  .review-card {
+    border: grey solid 1px;
+    padding: 1rem;
+  }

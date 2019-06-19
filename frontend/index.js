@@ -69,7 +69,7 @@ loginBtn.addEventListener('click', () => {
           } else {
             currentUser = data
           }
-        }).then((greeting))
+        }).then(greeting)
     })
   } else {
     loginForm.style.display = 'none'
@@ -93,7 +93,7 @@ signupBtn.addEventListener('click', () => {
         } else {
           currentUser = data
         }
-      })
+      }).then(greeting)
     
     })
         } else {
@@ -101,23 +101,6 @@ signupBtn.addEventListener('click', () => {
         }
       }
     )
-
-// signupUser = !signupUser
-//   if (signupUser) {
-//     signupForm.style.display = 'block'
-//     signupBtn.style.display = 'none'
-//     loginBtn.style.display = 'block'
-//     loginForm.style.display = 'none'
-//     signupForm.addEventListener('submit', () => { postUserToServer
-//     .then(data => {
-//       if (data.error) {
-//         alert(data.error)
-//   } else {
-//     signupForm.style.display = 'none'
-  
-//   }})
-  
-
 
 
 
@@ -176,11 +159,20 @@ function makeBeerCard(beer) {
         viewButton.className = "beer-button"
   viewButton.innerText = "More Details"
 
-  div.append(name, image, brewery, viewButton)
+  const starsOuter = document.createElement('div')
+        starsOuter.className = 'stars-outer'
+
+  const starsInner = document.createElement('div')
+        starsInner.className = 'stars-inner'
+
+  starsOuter.append(starsInner)
+  div.append(name, image, brewery, starsOuter, viewButton)
   beerCollection.append(div); 
 
  viewButton.addEventListener('click', () => renderBeer(beer)) 
 }
+
+
 
 
 // render all beers
@@ -297,7 +289,6 @@ function postBeer(e) {
     });
   
 }
-
 
 
 

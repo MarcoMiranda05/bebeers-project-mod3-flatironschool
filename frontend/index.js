@@ -57,12 +57,40 @@ signupBtn.addEventListener('click', () => {
     signupBtn.style.display = 'none'
     loginBtn.style.display = 'block'
     loginForm.style.display = 'none'
-    signupForm.addEventListener('submit', postUserToServer)
-  } else {
-    signupForm.style.display = 'none'
+    signupForm.addEventListener('submit', e => { 
+      e.preventDefault()
+      postUserToServer(e)
+      .then(data => {
+        if (data.error) {
+          alert(data.error)
+        } else {
+          currentUser = data
+        }
+      })
     
-  }
-})
+    })
+        } else {
+          signupForm.style.display = 'none'
+        }
+      }
+    )
+
+// signupUser = !signupUser
+//   if (signupUser) {
+//     signupForm.style.display = 'block'
+//     signupBtn.style.display = 'none'
+//     loginBtn.style.display = 'block'
+//     loginForm.style.display = 'none'
+//     signupForm.addEventListener('submit', () => { postUserToServer
+//     .then(data => {
+//       if (data.error) {
+//         alert(data.error)
+//   } else {
+//     signupForm.style.display = 'none'
+  
+//   }})
+  
+
 
 
 
@@ -88,7 +116,7 @@ function getUser(username) {
 
 function postUserToServer(event){
   event.preventDefault()
-  fetch(USERS_URL, {
+  return fetch(USERS_URL, {
     method:"POST",
     headers: {
               "Content-Type": "application/json",
@@ -97,7 +125,7 @@ function postUserToServer(event){
       body: JSON.stringify({
       username: signupForm.username.value
     })
-  })
+  }).then(data => data.json())
 }
 
 

@@ -252,6 +252,9 @@ function renderBeer(beer){
   addReviewBtn.innerText = 'Add Review'
   reviewCollection.append(reviewCard, addReviewBtn)
 
+  let reviewForm = document.createElement('form')
+  
+
   beerDiv.append(beerImageDiv, beerName, beerCountry, beerBrewery, beerStyle, beerNotes, reviewsBtn, hideReviewsBtn, reviewCollection )
   beerRenderDiv.append(beerDiv)
 }

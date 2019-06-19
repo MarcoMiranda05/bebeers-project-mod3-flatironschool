@@ -217,7 +217,42 @@ function renderBeer(beer){
    let beerBrewery = document.createElement('p')
        beerBrewery.innerText = `Brewery: ${beer.brewery}`
 
-  beerDiv.append(beerImageDiv, beerName, beerCountry, beerBrewery, beerStyle, beerNotes )
+  let reviewsBtn = document.createElement('button')
+      reviewsBtn.innerText = "Show Reviews"
+      reviewsBtn.addEventListener('click', () => {
+        reviewCollection.style.display = "block"
+        hideReviewsBtn.style.display = "block"
+        reviewsBtn.style.display = "none"
+      })
+
+  let hideReviewsBtn = document.createElement('button')
+      hideReviewsBtn.innerText = "Hide Reviews"
+      hideReviewsBtn.style.display = "none"
+      hideReviewsBtn.addEventListener('click', () => {
+        reviewCollection.style.display = "none"
+        hideReviewsBtn.style.display = "none"
+        reviewsBtn.style.display = "block"
+      })
+
+  let reviewCollection = document.createElement('div')
+      reviewCollection.className = "review-collection"
+      reviewCollection.style.display = "none"
+
+  let reviewCard = document.createElement('div')
+      beer.reviews.forEach(review => {
+        let rating = document.createElement('P')
+        rating.innerText = `Rating: ${review.rating}`
+        let pReview = document.createElement('p')
+        pReview.innerText = `Review ${review.review}`
+        reviewCard.append(rating, pReview)
+       
+  })
+  
+  let addReviewBtn = document.createElement('button')
+  addReviewBtn.innerText = 'Add Review'
+  reviewCollection.append(reviewCard, addReviewBtn)
+
+  beerDiv.append(beerImageDiv, beerName, beerCountry, beerBrewery, beerStyle, beerNotes, reviewsBtn, hideReviewsBtn, reviewCollection )
   beerRenderDiv.append(beerDiv)
 }
 

@@ -20,7 +20,7 @@ let formStyle = document.querySelector('#menu-style-selectors')
 let formCountries = document.querySelector('#menu-countries-selectors')
 let currentUser = null
 const search = document.querySelector('.search')
-
+const allBeersBtn = document.getElementById("all-beers-btn")
 
 
 //// welcome and logout
@@ -49,7 +49,12 @@ function greeting() {
   logout.style.display = "none"
 }
 }
-// welcome.innerText = `Welcome, ${currentUser.username}!`
+
+// All Beers Button
+
+allBeersBtn.addEventListener('click', () => { 
+  init()
+ })
 
 
 /// event listener to show/hide login field
@@ -239,7 +244,6 @@ function renderBeer(beer){
       reviewCollection.className = "review-collection"
       reviewCollection.style.display = "none"
 
-  
       beer.reviews.forEach(review => {
         let reviewCard = document.createElement('div')
         reviewCard.className = "review-card"

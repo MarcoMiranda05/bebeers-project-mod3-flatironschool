@@ -98,3 +98,12 @@ body {
     text-align: center;
 }
 
+#welcome {
+    float: right;
+    display: none;
+}
+
+#logout-btn {
+    float: right;
+    display: none;
+}

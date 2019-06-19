@@ -22,6 +22,33 @@ let currentUser = null
 
 
 
+//// welcome and logout
+const welcome = document.getElementById('welcome')
+const logout = document.getElementById('logout-btn')
+
+function greeting() {
+  currentUser === !null
+  if (currentUser) {
+  welcome.style.display = "block"
+  welcome.innerText = `Welcome, ${currentUser.username}!`
+  logout.style.display = "block"
+  logout.addEventListener('click', () => {
+    currentUser = null
+    welcome.style.display = "none"
+    logout.style.display = "none"
+    loginBtn.style.display = 'block'
+    signupBtn.style.display = 'block'
+  })
+  loginForm.style.display = 'none'
+  loginBtn.style.display = 'none'
+  signupBtn.style.display = 'none'
+  signupForm.style.display = 'none'
+} else {
+  welcome.style.display = "none"
+  logout.style.display = "none"
+}
+}
+// welcome.innerText = `Welcome, ${currentUser.username}!`
 
 
 /// event listener to show/hide login field
@@ -42,7 +69,7 @@ loginBtn.addEventListener('click', () => {
           } else {
             currentUser = data
           }
-        })
+        }).then((greeting))
     })
   } else {
     loginForm.style.display = 'none'

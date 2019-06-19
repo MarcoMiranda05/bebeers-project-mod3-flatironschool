@@ -56,6 +56,11 @@ body {
     display: none;
 }
 
+.sign-up {
+    float: right;
+    display: none;
+}
+
 .logo {
     height: 7rem;
   padding: 1rem;

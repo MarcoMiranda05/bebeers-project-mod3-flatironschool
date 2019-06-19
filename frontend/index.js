@@ -19,6 +19,7 @@ const beerCollection = document.querySelector("#beer-collection")
 let formStyle = document.querySelector('#menu-style-selectors')
 let formCountries = document.querySelector('#menu-countries-selectors')
 let currentUser = null
+const search = document.querySelector('.search')
 
 
 
@@ -303,6 +304,20 @@ function postBeerToServer(beer) {
   });
 }
 
+
+const searchBar = document.forms['search-bar-form'].querySelector('input');
+searchBar.addEventListener('keyup', function(e){
+let term = e.target.value.toLowerCase();
+let beers = document.getElementsByClassName('beer-card');
+Array.from(beers).forEach(function(beer){
+    let name = beer.firstElementChild.textContent;
+    if(name.toLowerCase().indexOf(term)!= -1) {
+      beer.style.display = 'inline-block';
+    } else {
+      beer.style.display = 'none';
+    }
+  })
+})
 
 // initialize page
 

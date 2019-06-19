@@ -1,3 +1,5 @@
+///// GLOBAL VARIABLES
+
 const addBtn = document.getElementById('new-beer-button')
 const   beerForm = document.querySelector('.container')
 let addBeer = false
@@ -10,12 +12,14 @@ let signupUser = false
 const signupForm = document.querySelector('.sign-up')
 const addBeerForm = document.querySelector('.add-beer-form')
 const BEER_URL = "http://localhost:3000/beers/";
-const COUNTRY_URL = "http://localhost:3000/countries/";
-const STYLES_URL = "http://localhost:3000/styles/";
-const USERS_URL = "http://localhost:3000/users/";
+const COUNTRY_URL = "http://localhost:3000/countries";
+const STYLES_URL = "http://localhost:3000/styles";
+const USERS_URL = "http://localhost:3000/users";
 const beerCollection = document.querySelector("#beer-collection")
 let formStyle = document.querySelector('#menu-style-selectors')
 let formCountries = document.querySelector('#menu-countries-selectors')
+let currentUser = null
+
 
 
 
@@ -28,6 +32,18 @@ loginBtn.addEventListener('click', () => {
     loginBtn.style.display = 'none'
     signupBtn.style.display = 'block'
     signupForm.style.display = 'none'
+    loginForm.addEventListener('submit', e => {
+      e.preventDefault()
+      const username = loginForm.username.value
+      getUser(username)
+        .then(data => {
+          if (data.error) {
+            alert(data.error)
+          } else {
+            currentUser = data
+          }
+        })
+    })
   } else {
     loginForm.style.display = 'none'
 
@@ -61,6 +77,42 @@ addBtn.addEventListener('click', () => {
     addBeerForm.removeEventListener("submit", postBeer)
   }
 })
+
+
+// // current user function
+function getUser(username) {
+  return fetch(USERS_URL + `/${username}`)
+    .then(data => data.json())
+}
+
+
+//   // function currentUser(userArray){
+ 
+//   let userNamesArray =  userArray.map( user =>  user.username)
+//   let loggedin = userNamesArray.find(user => {
+//     return user === loginForm[0].value
+//   })
+//     console.log(loggedin)
+  // }
+  
+
+  
+
+  
+
+
+
+  // .then(console.log)
+
+
+// function currentUser(userArray) {
+//   debugger
+//   username = loginForm[0].value
+//   userArray.find(function(username) {
+//     return username === userArray.username
+//   })
+// }
+
 
 // beer card
 function makeBeerCard(beer) {

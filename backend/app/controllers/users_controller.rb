@@ -29,6 +29,17 @@ class UsersController < ApplicationController
       user.destroy
       render json: user
   end
+
+
+  def get_user
+    user = User.find_by(username: params[:username])
+    if user
+        render json: user
+    else
+        render json: { error: 'User not found' }, status: 404
+    end
+  end
+
   private 
   def user_params
       params.require(:user).permit(:username)

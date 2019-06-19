@@ -57,6 +57,7 @@ signupBtn.addEventListener('click', () => {
     signupBtn.style.display = 'none'
     loginBtn.style.display = 'block'
     loginForm.style.display = 'none'
+    signupForm.addEventListener('submit', postUserToServer)
   } else {
     signupForm.style.display = 'none'
     
@@ -85,33 +86,19 @@ function getUser(username) {
     .then(data => data.json())
 }
 
-
-//   // function currentUser(userArray){
- 
-//   let userNamesArray =  userArray.map( user =>  user.username)
-//   let loggedin = userNamesArray.find(user => {
-//     return user === loginForm[0].value
-//   })
-//     console.log(loggedin)
-  // }
-  
-
-  
-
-  
-
-
-
-  // .then(console.log)
-
-
-// function currentUser(userArray) {
-//   debugger
-//   username = loginForm[0].value
-//   userArray.find(function(username) {
-//     return username === userArray.username
-//   })
-// }
+function postUserToServer(event){
+  event.preventDefault()
+  fetch(USERS_URL, {
+    method:"POST",
+    headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+            },
+      body: JSON.stringify({
+      username: signupForm.username.value
+    })
+  })
+}
 
 
 // beer card

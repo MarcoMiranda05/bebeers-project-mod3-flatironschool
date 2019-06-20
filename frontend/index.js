@@ -351,9 +351,12 @@ function renderBeer(beer){
   inputTextReviewForm.rows = "5"
   inputTextReviewForm.cols = "68"
   inputTextReviewForm.placeholder = `Review ${beer.name}...`
-  
 
-  reviewForm.append(p, inputRatingReviewForm, p2, inputTextReviewForm )
+  let submitReviewBtn = document.createElement('button')
+  submitReviewBtn.innerText = "Submit"
+  submitReviewBtn.style.display = "block"
+
+  reviewForm.append(p, inputRatingReviewForm, p2, inputTextReviewForm, submitReviewBtn )
 
   beerDiv.append(beerImageDiv, beerName, beerCountry, beerBrewery, beerStyle, beerNotes, reviewsBtn, hideReviewsBtn, reviewCollection )
   beerRenderDiv.append(beerDiv)

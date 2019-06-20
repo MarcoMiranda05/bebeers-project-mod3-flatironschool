@@ -214,6 +214,7 @@ function makeBeerCard(beer) {
   const div = document.createElement("div");
   div.className = "beer-card";
   div.dataset.id = beer.id;
+  $('#beer-collection').scrollspy({ target: '#render-beer' })
 
   const name = document.createElement("h2");
   name.innerText = beer.name;
@@ -240,7 +241,10 @@ function makeBeerCard(beer) {
   div.append(name, image, brewery, starsOuter, viewButton)
   beerCollection.append(div); 
 
- viewButton.addEventListener('click', () => renderBeer(beer)) 
+ viewButton.addEventListener('click', () => {
+   renderBeer(beer)
+   window.scrollTo({ top: 0, behavior: 'smooth' });
+  }) 
 }
 
 

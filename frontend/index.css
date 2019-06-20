@@ -10,6 +10,9 @@ body {
     padding-bottom: 6rem;
   }
 
+button {
+}
+
 .container {
     padding: 1rem;
     width: stretch;
@@ -17,6 +20,22 @@ body {
     display: none;
 }
    
+.add-beer-form {
+  flex-basis: 50%;
+    flex-grow: 1;
+    border: grey solid 1px;
+    padding: 1rem;
+    width: 40%;
+    height: auto;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10%;
+
+  background-image: url("https://media.istockphoto.com/photos/beer-background-picture-id155429750?k=6&m=155429750&s=612x612&w=0&h=2eoP_Jd_rf3E5SWogj9ogmzLbmAgYO7AwlY5P5NWGTM=");
+
+}
+
 #beer-collection {
     margin: 2rem;
     display: inline-block;
@@ -28,11 +47,14 @@ body {
     justify-self: center;
     text-align: center;
     border: grey solid 1px;
+    background-color: #efefef;
     padding: 1rem;
     width: 15rem;
     height: 25rem;
     display: inline-grid;
     margin: 1rem 2rem;
+    border-radius: 10%;
+    background-image: url("https://media.istockphoto.com/photos/beer-background-picture-id155429750?k=6&m=155429750&s=612x612&w=0&h=2eoP_Jd_rf3E5SWogj9ogmzLbmAgYO7AwlY5P5NWGTM=");
 }
   
 .beer-image {
@@ -76,6 +98,10 @@ body {
     display: block;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 10%;
+
+    background-image: url("https://wallpapercave.com/wp/wp3087148.jpg");
+
 
 }
 
@@ -96,6 +122,7 @@ body {
     padding: 1rem;
     background-color: #efefef;
     text-align: center;
+    background-image: url("https://i.kinja-img.com/gawker-media/image/upload/s--sj56u7aW--/c_scale,f_auto,fl_progressive,q_80,w_800/f5x9s02e7w1wwtzfr3si.jpg")
 }
 
 #welcome {
@@ -136,3 +163,4 @@ body {
     border: grey solid 1px;
     padding: 1rem;
   }
+

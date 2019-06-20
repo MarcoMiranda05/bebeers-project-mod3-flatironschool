@@ -224,6 +224,7 @@ function makeBeerCard(beer) {
 
   const brewery = document.createElement("p");
   brewery.innerText = `Brewery: ${beer.brewery}`;
+  brewery.className = 'brewery'
 
   const viewButton = document.createElement("button")
         viewButton.className = "beer-button"

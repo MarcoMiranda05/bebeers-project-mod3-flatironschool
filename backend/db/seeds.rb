@@ -59,7 +59,7 @@ styles = Style.create([
 beers = Beer.create([
  {name:"Corona Extra",
  brewery: "Cerveceria Modelo",
- country_id: 2,
+ country_id: 3,
  notes: "Born in Mexico and brought up on the beach, Corona is the perfect compliment to life’s simple pleasures. The golden colour, light refreshing flavor and iconic hand painted bottle, topped off with a freshly squeezed lime. When the living is easy, the beer is Corona.",
  abv: 4.5,
  image: "https://www.trzcacak.rs/file/max/2/26509_corona-png.png",

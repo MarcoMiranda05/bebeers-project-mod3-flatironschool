@@ -132,6 +132,6 @@ beers = Beer.create([
 reviews = Review.create([
  {user_id: 1,
  beer_id: 1,
- review: "Light and easy drinking, perfect for a hot day and barbecue!",
+ review_content: "Light and easy drinking, perfect for a hot day and barbecue!",
  rating: "4.0"}
 ])

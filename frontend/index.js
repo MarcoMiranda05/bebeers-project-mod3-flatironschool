@@ -15,13 +15,13 @@ const BEER_URL = "http://localhost:3000/beers/";
 const COUNTRY_URL = "http://localhost:3000/countries";
 const STYLES_URL = "http://localhost:3000/styles";
 const USERS_URL = "http://localhost:3000/users";
+const REVIEWS_URL = "http://localhost:3000/reviews";
 const beerCollection = document.querySelector("#beer-collection")
 let formStyle = document.querySelector('#menu-style-selectors')
 let formCountries = document.querySelector('#menu-countries-selectors')
 let currentUser = null
 const search = document.querySelector('.search')
 const allBeersBtn = document.getElementById("all-beers-btn")
-
 
 //// welcome and logout
 const welcome = document.getElementById('welcome')
@@ -250,7 +250,7 @@ function renderBeer(beer){
         let rating = document.createElement('P')
         rating.innerText = `Rating: ${review.rating}`
         let pReview = document.createElement('p')
-        pReview.innerText = `Review: ${review.review}`
+        pReview.innerText = `Review: ${review.review_content}`
         let user = document.createElement('p')
         user.innerText = `By ${review.user_id}`
         reviewCard.append(rating, pReview, user)
@@ -266,8 +266,9 @@ function renderBeer(beer){
   reviewCollection.append(addReviewBtn)
 
   let reviewForm = document.createElement('form')
+  reviewForm.className = "form-review"
   reviewForm.style.display = "none"
-  reviewForm.value = beer.id
+  reviewForm.name = beer.id
   reviewCollection.append(reviewForm)
 
   let p = document.createElement('p')
@@ -292,7 +293,41 @@ function renderBeer(beer){
 
   let submitReviewBtn = document.createElement('button')
   submitReviewBtn.innerText = "Submit"
-  submitReviewBtn.style.display = "block"
+  submitReviewBtn.style.display = "Block"
+  reviewForm.addEventListener("submit", postReview)
+  
+  function postReview(e) {
+    e.preventDefault();
+    const target = e.target
+    const review = {
+      user_id: currentUser.id,
+        beer_id: Number(reviewForm.name),
+        rating: Number(reviewForm[0].value),
+        review_content: reviewForm[1].value
+    };
+  
+    postReviewToServer(review)
+  
+      .then(reviewData => reviewData.json())
+      .then(
+        reviewForm.reset(),
+        init()
+      );
+    
+  }
+  
+
+  function postReviewToServer(review){
+    return fetch(REVIEWS_URL, {
+      method:"POST",
+      headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+              },
+        body: JSON.stringify(review)
+    })
+  }
+  
 
   reviewForm.append(p, inputRatingReviewForm, p2, inputTextReviewForm, submitReviewBtn )
 

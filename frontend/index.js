@@ -204,6 +204,8 @@ function styleDropdown(styleArray){
       )})
   })
 }
+
+
 //////
 
 
@@ -306,19 +308,7 @@ function renderBeer(beer){
       reviewCollection.className = "review-collection"
       reviewCollection.style.display = "none"
 
-      beer.reviews.forEach(review => {
-        let reviewCard = document.createElement('div')
-        reviewCard.className = "review-card"
-        let rating = document.createElement('P')
-        rating.innerText = `Rating: ${review.rating}`
-        let pReview = document.createElement('p')
-        pReview.innerText = `Review: ${review.review_content}`
-        let user = document.createElement('p')
-        user.innerText = `By ${review.user_id}`
-        reviewCard.append(rating, pReview, user)
-        reviewCollection.append(reviewCard)
-       
-  })
+      renderReviews(beer, reviewCollection)
   
   let addReviewBtn = document.createElement('button')
   addReviewBtn.innerText = 'Add Review'
@@ -371,11 +361,29 @@ function renderBeer(beer){
     postReviewToServer(review)
   
       .then(reviewData => reviewData.json())
-      .then(
-        reviewForm.reset(),
-        init()
-      );
+      .then(review => {
+        reviewForm.reset()
+        // beer.reviews.push(review)
+        renderReview(review, reviewCollection)
+      });
     
+  }
+
+  function renderReview (review, reviewCollection) {
+    let reviewCard = document.createElement('div')
+    reviewCard.className = "review-card"
+    let rating = document.createElement('P')
+    rating.innerText = `Rating: ${review.rating}`
+    let pReview = document.createElement('p')
+    pReview.innerText = `Review: ${review.review_content}`
+    let user = document.createElement('p')
+    user.innerText = `By ${review.user_id}`
+    reviewCard.append(rating, pReview, user)
+    reviewCollection.prepend(reviewCard)
+  }
+
+  function renderReviews (beer, reviewCollection) {
+    beer.reviews.forEach(review => renderReview(review, reviewCollection))
   }
   
 

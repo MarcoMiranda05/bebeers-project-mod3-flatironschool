@@ -377,7 +377,8 @@ function renderBeer(beer){
     let pReview = document.createElement('p')
     pReview.innerText = `Review: ${review.review_content}`
     let user = document.createElement('p')
-    user.innerText = `By ${review.user_id}`
+    console.log(review)
+    user.innerText = `By ${review.username}`
     reviewCard.append(rating, pReview, user)
     reviewCollection.prepend(reviewCard)
   }

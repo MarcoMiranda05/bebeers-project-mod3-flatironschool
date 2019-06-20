@@ -62,7 +62,7 @@ beers = Beer.create([
  country_id: 3,
  notes: "Born in Mexico and brought up on the beach, Corona is the perfect compliment to life’s simple pleasures. The golden colour, light refreshing flavor and iconic hand painted bottle, topped off with a freshly squeezed lime. When the living is easy, the beer is Corona.",
  abv: 4.5,
- image: "https://www.trzcacak.rs/file/max/2/26509_corona-png.png",
+ image: "https://www.stickpng.com/assets/images/585e5e47cb11b227491c33ee.png",
  style_id: 1},
  {name:"Punk IPA",
  brewery: "BrewDog",
@@ -90,7 +90,7 @@ beers = Beer.create([
  country_id: 15,
  notes: "100% Barley malt, choice hops and pure water give this brew unsurpassed clarity.",
  abv: 5.0,
- image: "http://pluspng.com/img-png/heineken-png-beer-bottle-png-free-buckle-material-vector-png-image-650.jpg",
+ image: "http://pluspng.com/img-png/heineken-png--312.png",
  style_id: 1},
  {name:"London Pride",
  brewery: "Fuller's",
@@ -104,7 +104,7 @@ beers = Beer.create([
  country_id: 16,
  notes: "The aroma of roasted grain. Dark with brown head. Roasted barley, coffee. Medium body, light carbonation.",
  abv: 4.2,
- image: "https://banner2.kisspng.com/20180612/uxt/kisspng-guinness-draught-beer-stout-beverage-can-guinness-black-lager-5b1f6940cd5721.5354003215287852168411.jpg",
+ image: "https://i.ya-webdesign.com/images/guinness-bottle-png.png",
  style_id: 3},
  {name:"Beck's",
  brewery: "AB InBev",
@@ -125,7 +125,7 @@ beers = Beer.create([
  country_id: 1,
  notes: "First brewed at Bosteels, transfered to the Champagne region of France were it is treated much like a champagne with the bottles inverted and the yeast expunged and bottle recorked.",
  abv: 11.5,
- image: "https://applejack.com/site/images/Deus-Brut-Des-Flandres-750-ml-Bottle_1.png",
+ image: "https://www.thebelgianbeercompany.com/wp-content/uploads/2018/09/Deus-Bottle-600x900.png",
  style_id: 10}
 ])
 

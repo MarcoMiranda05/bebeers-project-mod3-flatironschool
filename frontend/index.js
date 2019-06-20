@@ -280,7 +280,7 @@ function renderBeer(beer){
       beerNotes.innerText = `Notes: ${beer.notes}`
 
   let beerCountry = document.createElement('p')
-      beerCountry.innerText = `${beer.brewery} - ${beer.country.name}`
+      beerCountry.innerText = `Country: ${beer.country.name}`
 
   let beerStyle = document.createElement('p')
       beerStyle.innerText = `Style: ${beer.style.name}`

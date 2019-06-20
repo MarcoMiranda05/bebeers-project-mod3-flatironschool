@@ -227,11 +227,26 @@ function makeBeerCard(beer) {
         viewButton.className = "beer-button"
   viewButton.innerText = "More Details"
 
+
   const starsOuter = document.createElement('div')
         starsOuter.className = 'stars-outer'
 
-  const starsInner = document.createElement('div')
+  const starsInner = document.createElement('p')
         starsInner.className = 'stars-inner'
+        
+        
+        // beer.reviews.forEach(review => {
+        //   sumRating = []
+        //   sumRating.push(review.rating)
+        //   lengthRating = sumRating.length
+        //   sumRating.reduce((total, rating) => total + rating)
+         
+        //   averageRating =  lengthRating / sumRating
+          
+          
+        //   })
+  
+        //   starsInner.innerText = `${averageRating}`
 
   starsOuter.append(starsInner)
   div.append(name, image, brewery, starsOuter, viewButton)
@@ -239,6 +254,11 @@ function makeBeerCard(beer) {
 
  viewButton.addEventListener('click', () => renderBeer(beer)) 
 }
+
+
+
+
+
 
 
 
@@ -317,6 +337,7 @@ function renderBeer(beer){
         user.innerText = `By ${review.user_id}`
         reviewCard.append(rating, pReview, user)
         reviewCollection.append(reviewCard)
+
        
   })
   

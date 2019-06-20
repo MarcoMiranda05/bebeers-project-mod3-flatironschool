@@ -124,6 +124,7 @@ addBtn.addEventListener('click', () => {
 })
 
 
+
 // // current user function
 function getUser(username) {
   return fetch(USERS_URL + `/${username}`)
@@ -143,6 +144,67 @@ function postUserToServer(event){
     })
   }).then(data => data.json())
 }
+
+
+function getBeers(){
+  return fetch(BEER_URL)
+    .then(data => data.json())
+    
+}
+/// nav bar
+
+  const countryDrop = document.querySelector('#country-dropdown')
+  const styleDrop = document.querySelector('#style-dropdown')
+
+
+  /// filter countries
+  /// render list of countries to nav bar
+    fetch(COUNTRY_URL)
+    .then(data => data.json())
+    .then(countryDropdown)
+
+
+function countryDropdown(countryArray){ 
+    countryArray.forEach(country => {
+      let countryA = document.createElement('a')
+        countryA.className = "dropdown-item"
+        countryA.innerText = country.name
+        countryA.name = country.id
+        countryDrop.append(countryA)
+        countryA.addEventListener('click', () => {
+          getBeers().then( data => {
+             showBeers(data.filter(beer => beer.country.name === countryA.innerText))
+             
+          }
+        )})
+  })
+}
+/////
+
+
+////// filter styles
+fetch(STYLES_URL)
+.then(data => data.json())
+.then(styleDropdown)
+
+function styleDropdown(styleArray){ 
+  styleArray.forEach(style => {
+    let styleA = document.createElement('a')
+      styleA.className = "dropdown-item"
+      styleA.innerText = style.name
+      styleA.name = style.id
+      styleDrop.append(styleA)
+      styleA.addEventListener('click', () => {
+         getBeers().then( data => {
+            showBeers(data.filter(beer => beer.style.name === styleA.innerText))
+            
+         }
+            
+         
+      )})
+  })
+}
+//////
 
 
 // beer card
@@ -304,7 +366,7 @@ function renderBeer(beer){
 
 
 //rendering countries to form
-  
+
  fetch(COUNTRY_URL)
   .then(data => data.json())
   .then(countriesArray)

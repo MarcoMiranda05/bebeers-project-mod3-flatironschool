@@ -250,18 +250,48 @@ function renderBeer(beer){
         let rating = document.createElement('P')
         rating.innerText = `Rating: ${review.rating}`
         let pReview = document.createElement('p')
-        pReview.innerText = `Review ${review.review}`
-        reviewCard.append(rating, pReview)
+        pReview.innerText = `Review: ${review.review}`
+        let user = document.createElement('p')
+        user.innerText = `By ${review.user_id}`
+        reviewCard.append(rating, pReview, user)
         reviewCollection.append(reviewCard)
        
   })
   
   let addReviewBtn = document.createElement('button')
   addReviewBtn.innerText = 'Add Review'
+  addReviewBtn.addEventListener('click', () => {
+    reviewForm.style.display = "block"
+  })
   reviewCollection.append(addReviewBtn)
 
   let reviewForm = document.createElement('form')
+  reviewForm.style.display = "none"
+  reviewForm.value = beer.id
+  reviewCollection.append(reviewForm)
+
+  let p = document.createElement('p')
+  p.innerText = "Rating:"
+  p.style.display = "inline-block"
   
+  let inputRatingReviewForm = document.createElement('input')
+  inputRatingReviewForm.type = "number"
+  inputRatingReviewForm.max = "5"
+  inputRatingReviewForm.min = "0"
+  inputRatingReviewForm.step = "0.1"
+  inputRatingReviewForm.placeholder = "0"
+  inputRatingReviewForm.style.display = "inline-block"
+
+  let p2 = document.createElement('p')
+  p2.innerText = "Review:"
+
+  let inputTextReviewForm = document.createElement('textarea')
+  inputTextReviewForm.rows = "5"
+  inputTextReviewForm.cols = "68"
+  inputTextReviewForm.placeholder = `Review ${beer.name}...`
+  
+
+  reviewForm.append(p, inputRatingReviewForm, p2, inputTextReviewForm )
 
   beerDiv.append(beerImageDiv, beerName, beerCountry, beerBrewery, beerStyle, beerNotes, reviewsBtn, hideReviewsBtn, reviewCollection )
   beerRenderDiv.append(beerDiv)

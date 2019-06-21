@@ -231,14 +231,35 @@ function makeBeerCard(beer) {
         viewButton.className = "beer-button"
   viewButton.innerText = "More Details"
 
-  const starsOuter = document.createElement('div')
-        starsOuter.className = 'stars-outer'
+  stars = document.createElement('p')
 
-  const starsInner = document.createElement('div')
-        starsInner.className = 'stars-inner'
+  beer.reviews.forEach( review => {
+    
+    ratingArray = []
+    rating = review.rating
+    ratingArray.push(rating)
+    ratingLength = ratingArray.length
+    ratingArray.reduce((total, nextRating) => total + nextRating, 0)
+    
+    
+    averageRating = ratingArray / ratingLength
+   
+    if (averageRating >= 0.01 && averageRating <= 1 ) {
+      stars.innerHTML = "<p>I will display &#x2605;</p>"
+    } else if (averageRating >= 1.01 && averageRating <= 2) {
+      stars.innerHTML = `&#9733; &#9733;`;
+    } else if (averageRating >= 2.01 && averageRating <= 3) {
+      stars.innerHTML = `&#9733; &#9733; &#9733;`;
+    } else if (averageRating >= 3.01 && averageRating <= 4) {
+      stars.innerHTML = `&#9733; &#9733; &#9733; &#9733;`;
+    } else (averageRating >= 4.01 && averageRating <= 5); {
+      stars.innerHTML = `&#9733; &#9733; &#9733; &#9733; &#9733;`;
+    }
 
-  starsOuter.append(starsInner)
-  div.append(name, image, brewery, starsOuter, viewButton)
+  })
+
+  
+  div.append(name, image, brewery, stars, viewButton)
   beerCollection.append(div); 
 
  viewButton.addEventListener('click', () => {
@@ -247,6 +268,33 @@ function makeBeerCard(beer) {
   }) 
 }
 
+// function starRating(beer){
+  
+//   beer.reviews.forEach( review => {
+//     stars = document.createElement('p')
+//     ratingArray = []
+//     rating = review.rating
+//     ratingArray.push(rating)
+//     ratingLength = ratingArray.length
+//     ratingArray.reduce((total, nextRating) => total + nextRating, 0)
+    
+    
+//     averageRating = ratingArray / ratingLength
+    
+//     if (averageRating >= 0.01 && averageRating <= 1 ) {
+//       stars.innerText = '&#9733';
+//     } else if (averageRating >= 1.01 && averageRating <= 2) {
+//       stars.innerText = '&#9733 &#9733';
+//     } else if (averageRating >= 2.01 && averageRating <= 3) {
+//       stars.innerText = '&#9733 &#9733 &#9733';
+//     } else if (averageRating >= 3.01 && averageRating <= 4) {
+//       stars.innerText = '&#9733 &#9733 &#9733 &#9733';
+//     } else (averageRating >= 4.01 && averageRating <= 5); {
+//       stars.innerText = '&#9733 &#9733 &#9733 &#9733 &#9733';
+//     }
+
+//   })
+// }
 
 
 

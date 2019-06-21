@@ -230,6 +230,7 @@ function makeBeerCard(beer) {
   const viewButton = document.createElement("button")
         viewButton.className = "beer-button"
   viewButton.innerText = "More Details"
+  viewButton.setAttribute("border-radius", "50%")
 
   const starsOuter = document.createElement('div')
         starsOuter.className = 'stars-outer'
@@ -303,7 +304,7 @@ function renderBeer(beer){
 
   let closeCard = document.createElement('button')
   closeCard.innerText = "x"
-  closeCard.style.float = "right"
+  closeCard.className = "close-card"
   closeCard.addEventListener("click", () => {
     beerRenderDiv.style.display = "none"
   })

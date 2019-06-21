@@ -249,8 +249,8 @@ function beerStars(beer) {
       return `&#9733; &#9734; &#9734; &#9734; &#9734;`;
       break;
     default:
-      return " no rating ";
-  }
+      return `&#9734; &#9734; &#9734; &#9734; &#9734;`;
+    }
 }
 
 // render all beers
@@ -419,7 +419,7 @@ function renderBeer(beer) {
         return `&#9733; &#9734; &#9734; &#9734; &#9734;`;
         break;
       default:
-        return " no rating ";
+        return `&#9734; &#9734; &#9734; &#9734; &#9734;`;
     }
   };
 

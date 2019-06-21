@@ -193,10 +193,11 @@ button {
     text-align: center;
     text-decoration: none;
     border-radius: 50%;
+
   }
 
   .fa-facebook {
-
+    color: rgb(43, 43, 219);
   }
 
   .fa-twitter{
@@ -214,3 +215,5 @@ button {
   .fa-youtube{
     color: red;
   }
+
+  

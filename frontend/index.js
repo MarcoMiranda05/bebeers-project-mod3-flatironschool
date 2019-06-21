@@ -508,6 +508,7 @@ Array.from(beers).forEach(function(beer){
   })
 })
 
+
 // initialize page
 
 function init() {

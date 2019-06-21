@@ -345,7 +345,7 @@ function renderBeer(beer){
   inputRatingReviewForm.type = "number"
   inputRatingReviewForm.max = "5"
   inputRatingReviewForm.min = "0"
-  inputRatingReviewForm.step = "0.1"
+  inputRatingReviewForm.step = "0.5"
   inputRatingReviewForm.placeholder = "0"
   inputRatingReviewForm.style.display = "inline-block"
 
@@ -394,10 +394,11 @@ function renderBeer(beer){
     let rating = document.createElement('P')
     rating.innerText = `Rating: ${review.rating}/5`
     let pReview = document.createElement('p')
+    pReview.className = "review-content"
     pReview.innerText = `Review: ${review.review_content}`
     let user = document.createElement('p')
-    console.log(review)
     user.innerText = `By ${review.username}`
+    user.className = "review-by-user"
     reviewCard.append(reviewImageDiv, rating, pReview, user)
     reviewCollection.prepend(reviewCard)
   }

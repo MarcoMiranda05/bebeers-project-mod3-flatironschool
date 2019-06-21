@@ -234,6 +234,16 @@ button {
 
   }
 
+  .review-content {
+    font-size: 20px;
+    font-weight: bold;
+
+  }
+
+  .review-by-user {
+    font-style: italic;
+  }
+
   .fa {
     padding: 20px;
     font-size: 50px !important;

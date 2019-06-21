@@ -206,9 +206,9 @@ function makeBeerCard(beer) {
   image.className = "beer-image";
   image.src = beer.image;
 
-  const brewery = document.createElement("p");
-  brewery.innerText = `Brewery: ${beer.brewery}`;
-  brewery.className = "brewery";
+  // const brewery = document.createElement("p");
+  // brewery.innerText = `Brewery: ${beer.brewery}`;
+  // brewery.className = "brewery";
 
   const viewButton = document.createElement("button");
   viewButton.className = "beer-button";
@@ -218,7 +218,7 @@ function makeBeerCard(beer) {
   const stars = document.createElement("p");
   stars.innerHTML = beerStars(beer);
 
-  div.append(name, image, brewery, stars, viewButton);
+  div.append(name, image, stars, viewButton);
   beerCollection.append(div);
 
   viewButton.addEventListener("click", () => {
@@ -237,16 +237,16 @@ function beerStars(beer) {
       return `&#9733; &#9733; &#9733; &#9733; &#9733;`;
       break;
     case 4:
-      return `&#9733; &#9733; &#9733; &#9733;`;
+      return `&#9733; &#9733; &#9733; &#9733; &#9734;`;
       break;
     case 3:
-      return `&#9733; &#9733; &#9733;`;
+      return `&#9733; &#9733; &#9733; &#9734; &#9734;`;
       break;
     case 2:
-      return `&#9733; &#9733;`;
+      return `&#9733; &#9733; &#9734; &#9734; &#9734; `;
       break;
     case 1:
-      return `&#9733;`;
+      return `&#9733; &#9734; &#9734; &#9734; &#9734;`;
       break;
     default:
       return " no rating ";
@@ -279,6 +279,9 @@ function renderBeer(beer) {
   let beerName = document.createElement("h2");
   beerName.innerText = beer.name;
 
+  let beerRating = document.createElement("p")
+  beerRating.innerHTML = beerStars(beer)
+
   let beerNotes = document.createElement("p");
   beerNotes.innerText = `Notes: ${beer.notes}`;
 
@@ -303,64 +306,6 @@ function renderBeer(beer) {
   closeCard.innerText = "x";
   closeCard.className = "close-card";
   closeCard.addEventListener("click", () => {
-<<<<<<< HEAD
-    beerRenderDiv.style.display = "none";
-  });
-
-  let hideReviewsBtn = document.createElement("button");
-  hideReviewsBtn.innerText = "Hide Reviews";
-  hideReviewsBtn.style.display = "none";
-  hideReviewsBtn.addEventListener("click", () => {
-    reviewCollection.style.display = "none";
-    hideReviewsBtn.style.display = "none";
-    reviewsBtn.style.display = "block";
-  });
-
-  let reviewCollection = document.createElement("div");
-  reviewCollection.className = "review-collection";
-  reviewCollection.style.display = "none";
-
-  renderReviews(beer, reviewCollection);
-
-  let addReviewBtn = document.createElement("button");
-  addReviewBtn.innerText = "Add Review";
-  addReviewBtn.addEventListener("click", () => {
-    reviewForm.style.display = "block";
-  });
-  reviewCollection.append(addReviewBtn);
-
-  let reviewForm = document.createElement("form");
-  reviewForm.className = "form-review";
-  reviewForm.style.display = "none";
-  reviewForm.name = beer.id;
-  reviewCollection.append(reviewForm);
-
-  let p = document.createElement("p");
-  p.innerText = "Rating:";
-  p.style.display = "inline-block";
-
-  let inputRatingReviewForm = document.createElement("input");
-  inputRatingReviewForm.type = "number";
-  inputRatingReviewForm.max = "5";
-  inputRatingReviewForm.min = "0";
-  inputRatingReviewForm.step = "0.1";
-  inputRatingReviewForm.placeholder = "0";
-  inputRatingReviewForm.style.display = "inline-block";
-
-  let p2 = document.createElement("p");
-  p2.innerText = "Review:";
-
-  let inputTextReviewForm = document.createElement("textarea");
-  inputTextReviewForm.rows = "5";
-  inputTextReviewForm.cols = "68";
-  inputTextReviewForm.placeholder = `Review ${beer.name}...`;
-
-  let submitReviewBtn = document.createElement("button");
-  submitReviewBtn.innerText = "Submit";
-  submitReviewBtn.style.display = "Block";
-  reviewForm.addEventListener("submit", postReview);
-
-=======
     beerRenderDiv.style.display = "none"
   })
 
@@ -417,7 +362,6 @@ function renderBeer(beer) {
   submitReviewBtn.style.display = "Block"
   reviewForm.addEventListener("submit", postReview)
   
->>>>>>> 88fe1756e74227429a5cf5d87223a565137a151c
   function postReview(e) {
     e.preventDefault();
     const target = e.target;
@@ -437,25 +381,6 @@ function renderBeer(beer) {
       });
   }
 
-<<<<<<< HEAD
-  function renderReview(review, reviewCollection) {
-    let reviewCard = document.createElement("div");
-    reviewCard.className = "review-card";
-    let reviewImageDiv = document.createElement("div");
-    let reviewImg = document.createElement("img");
-    reviewImg.src = "https://i.imgur.com/klpkZ5N.png";
-    reviewImg.className = "review-image-single-render";
-    reviewImageDiv.append(reviewImg);
-    let rating = document.createElement("P");
-    rating.innerText = `Rating: ${review.rating}/5`;
-    let pReview = document.createElement("p");
-    pReview.innerText = `Review: ${review.review_content}`;
-    let user = document.createElement("p");
-    console.log(review);
-    user.innerText = `By ${review.username}`;
-    reviewCard.append(reviewImageDiv, rating, pReview, user);
-    reviewCollection.prepend(reviewCard);
-=======
   function renderReview (review, reviewCollection) {
     let reviewCard = document.createElement('div')
     reviewCard.className = "review-card"
@@ -474,7 +399,6 @@ function renderBeer(beer) {
     user.className = "review-by-user"
     reviewCard.append(reviewImageDiv, rating, pReview, user)
     reviewCollection.prepend(reviewCard)
->>>>>>> 88fe1756e74227429a5cf5d87223a565137a151c
   }
 
   function renderReviews(beer, reviewCollection) {
@@ -504,6 +428,7 @@ function renderBeer(beer) {
     closeCard,
     beerImageDiv,
     beerName,
+    beerRating,
     beerCountry,
     beerBrewery,
     beerStyle,

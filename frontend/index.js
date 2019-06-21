@@ -303,6 +303,7 @@ function renderBeer(beer) {
   closeCard.innerText = "x";
   closeCard.className = "close-card";
   closeCard.addEventListener("click", () => {
+<<<<<<< HEAD
     beerRenderDiv.style.display = "none";
   });
 
@@ -359,6 +360,64 @@ function renderBeer(beer) {
   submitReviewBtn.style.display = "Block";
   reviewForm.addEventListener("submit", postReview);
 
+=======
+    beerRenderDiv.style.display = "none"
+  })
+
+  let hideReviewsBtn = document.createElement('button')
+      hideReviewsBtn.innerText = "Hide Reviews"
+      hideReviewsBtn.style.display = "none"
+      hideReviewsBtn.addEventListener('click', () => {
+        reviewCollection.style.display = "none"
+        hideReviewsBtn.style.display = "none"
+        reviewsBtn.style.display = "block"
+      })
+
+  let reviewCollection = document.createElement('div')
+      reviewCollection.className = "review-collection"
+      reviewCollection.style.display = "none"
+
+      renderReviews(beer, reviewCollection)
+  
+  let addReviewBtn = document.createElement('button')
+  addReviewBtn.innerText = 'Add Review'
+  addReviewBtn.addEventListener('click', () => {
+    reviewForm.style.display = "block"
+  })
+  reviewCollection.append(addReviewBtn)
+
+  let reviewForm = document.createElement('form')
+  reviewForm.className = "form-review"
+  reviewForm.style.display = "none"
+  reviewForm.name = beer.id
+  reviewCollection.append(reviewForm)
+
+  let p = document.createElement('p')
+  p.innerText = "Rating:"
+  p.style.display = "inline-block"
+  
+  let inputRatingReviewForm = document.createElement('input')
+  inputRatingReviewForm.type = "number"
+  inputRatingReviewForm.max = "5"
+  inputRatingReviewForm.min = "0"
+  inputRatingReviewForm.step = "0.5"
+  inputRatingReviewForm.placeholder = "0"
+  inputRatingReviewForm.style.display = "inline-block"
+
+  let p2 = document.createElement('p')
+  p2.innerText = "Review:"
+
+  let inputTextReviewForm = document.createElement('textarea')
+  inputTextReviewForm.rows = "5"
+  inputTextReviewForm.cols = "68"
+  inputTextReviewForm.placeholder = `Review ${beer.name}...`
+
+  let submitReviewBtn = document.createElement('button')
+  submitReviewBtn.innerText = "Submit"
+  submitReviewBtn.style.display = "Block"
+  reviewForm.addEventListener("submit", postReview)
+  
+>>>>>>> 88fe1756e74227429a5cf5d87223a565137a151c
   function postReview(e) {
     e.preventDefault();
     const target = e.target;
@@ -378,6 +437,7 @@ function renderBeer(beer) {
       });
   }
 
+<<<<<<< HEAD
   function renderReview(review, reviewCollection) {
     let reviewCard = document.createElement("div");
     reviewCard.className = "review-card";
@@ -395,6 +455,26 @@ function renderBeer(beer) {
     user.innerText = `By ${review.username}`;
     reviewCard.append(reviewImageDiv, rating, pReview, user);
     reviewCollection.prepend(reviewCard);
+=======
+  function renderReview (review, reviewCollection) {
+    let reviewCard = document.createElement('div')
+    reviewCard.className = "review-card"
+    let reviewImageDiv = document.createElement('div')
+    let reviewImg = document.createElement('img')
+      reviewImg.src = "https://i.imgur.com/klpkZ5N.png"
+      reviewImg.className = "review-image-single-render"
+      reviewImageDiv.append(reviewImg)
+    let rating = document.createElement('P')
+    rating.innerText = `Rating: ${review.rating}/5`
+    let pReview = document.createElement('p')
+    pReview.className = "review-content"
+    pReview.innerText = `Review: ${review.review_content}`
+    let user = document.createElement('p')
+    user.innerText = `By ${review.username}`
+    user.className = "review-by-user"
+    reviewCard.append(reviewImageDiv, rating, pReview, user)
+    reviewCollection.prepend(reviewCard)
+>>>>>>> 88fe1756e74227429a5cf5d87223a565137a151c
   }
 
   function renderReviews(beer, reviewCollection) {

@@ -385,6 +385,11 @@ function renderBeer(beer){
   function renderReview (review, reviewCollection) {
     let reviewCard = document.createElement('div')
     reviewCard.className = "review-card"
+    let reviewImageDiv = document.createElement('div')
+    let reviewImg = document.createElement('img')
+      reviewImg.src = "https://i.imgur.com/klpkZ5N.png"
+      reviewImg.className = "review-image-single-render"
+      reviewImageDiv.append(reviewImg)
     let rating = document.createElement('P')
     rating.innerText = `Rating: ${review.rating}`
     let pReview = document.createElement('p')
@@ -392,7 +397,7 @@ function renderBeer(beer){
     let user = document.createElement('p')
     console.log(review)
     user.innerText = `By ${review.username}`
-    reviewCard.append(rating, pReview, user)
+    reviewCard.append(reviewImageDiv, rating, pReview, user)
     reviewCollection.prepend(reviewCard)
   }
 

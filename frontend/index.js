@@ -345,7 +345,7 @@ function renderBeer(beer) {
   inputRatingReviewForm.type = "number"
   inputRatingReviewForm.max = "5"
   inputRatingReviewForm.min = "0"
-  inputRatingReviewForm.step = "0.5"
+  inputRatingReviewForm.step = "1"
   inputRatingReviewForm.placeholder = "0"
   inputRatingReviewForm.style.display = "inline-block"
 
@@ -390,7 +390,7 @@ function renderBeer(beer) {
       reviewImg.className = "review-image-single-render"
       reviewImageDiv.append(reviewImg)
     let rating = document.createElement('P')
-    rating.innerText = `Rating: ${review.rating}/5`
+    rating.innerHTML = reviewStar(review.rating)
     let pReview = document.createElement('p')
     pReview.className = "review-content"
     pReview.innerText = `Review: ${review.review_content}`
@@ -400,6 +400,29 @@ function renderBeer(beer) {
     reviewCard.append(reviewImageDiv, rating, pReview, user)
     reviewCollection.prepend(reviewCard)
   }
+
+  function reviewStar(rating) {
+    switch (rating) {
+      case 5:
+        return `&#9733; &#9733; &#9733; &#9733; &#9733;`;
+        break;
+      case 4:
+        return `&#9733; &#9733; &#9733; &#9733; &#9734;`;
+        break;
+      case 3:
+        return `&#9733; &#9733; &#9733; &#9734; &#9734;`;
+        break;
+      case 2:
+        return `&#9733; &#9733; &#9734; &#9734; &#9734; `;
+        break;
+      case 1:
+        return `&#9733; &#9734; &#9734; &#9734; &#9734;`;
+        break;
+      default:
+        return " no rating ";
+    }
+  };
+
 
   function renderReviews(beer, reviewCollection) {
     beer.reviews.forEach(review => renderReview(review, reviewCollection));

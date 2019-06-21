@@ -391,7 +391,7 @@ function renderBeer(beer){
       reviewImg.className = "review-image-single-render"
       reviewImageDiv.append(reviewImg)
     let rating = document.createElement('P')
-    rating.innerText = `Rating: ${review.rating}`
+    rating.innerText = `Rating: ${review.rating}/5`
     let pReview = document.createElement('p')
     pReview.innerText = `Review: ${review.review_content}`
     let user = document.createElement('p')

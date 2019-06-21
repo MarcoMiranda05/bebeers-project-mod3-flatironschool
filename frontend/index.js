@@ -266,9 +266,10 @@ function renderBeer(beer){
 
   const beerRenderDiv = document.querySelector('#render-beer')
         beerRenderDiv.innerHTML = ""
-
+        beerRenderDiv.style.display = "block"
   let beerDiv = document.createElement('div')
       beerDiv.className = "beer-render-div"
+      
 
   let beerImageDiv = document.createElement('div')
       
@@ -299,6 +300,13 @@ function renderBeer(beer){
         hideReviewsBtn.style.display = "block"
         reviewsBtn.style.display = "none"
       })
+
+  let closeCard = document.createElement('button')
+  closeCard.innerText = "x"
+  closeCard.style.float = "right"
+  closeCard.addEventListener("click", () => {
+    beerRenderDiv.style.display = "none"
+  })
 
   let hideReviewsBtn = document.createElement('button')
       hideReviewsBtn.innerText = "Hide Reviews"
@@ -407,7 +415,7 @@ function renderBeer(beer){
 
   reviewForm.append(p, inputRatingReviewForm, p2, inputTextReviewForm, submitReviewBtn )
 
-  beerDiv.append(beerImageDiv, beerName, beerCountry, beerBrewery, beerStyle, beerNotes, reviewsBtn, hideReviewsBtn, reviewCollection )
+  beerDiv.append(closeCard, beerImageDiv, beerName, beerCountry, beerBrewery, beerStyle, beerNotes, reviewsBtn, hideReviewsBtn, reviewCollection )
   beerRenderDiv.append(beerDiv)
 }
 

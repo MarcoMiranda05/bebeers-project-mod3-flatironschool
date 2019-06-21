@@ -18,10 +18,9 @@ Beer.destroy_all
 User.destroy_all
 Style.destroy_all
 
-users = User.create([
-{username: "marcomiranda"},
-{username: "amariellington"}
-])
+10.times do 
+  User.create(username: Faker::Name.unique.name)
+end
 
 countries = Country.create([
  {name: "Belgium"},
@@ -129,9 +128,16 @@ beers = Beer.create([
  style_id: 10}
 ])
 
-reviews = Review.create([
- {user_id: 1,
- beer_id: 1,
- review_content: "Light and easy drinking, perfect for a hot day and barbecue!",
- rating: "4.0"}
-])
+100.times do
+  Review.create(user_id: User.ids.sample,
+    beer_id: Beer.ids.sample,
+    review_content: Faker::ChuckNorris.fact,
+    rating: Faker::Number.between(1, 5) )
+  end
+
+# Review.create([
+#  {user_id: 1,
+#  beer_id: 1,
+#  review_content: "Light and easy drinking, perfect for a hot day and barbecue!",
+#  rating: "4.0"}
+# ])

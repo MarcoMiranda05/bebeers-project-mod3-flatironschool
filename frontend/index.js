@@ -228,29 +228,33 @@ function makeBeerCard(beer) {
 }
 
 function beerStars(beer) {
-  let allRatings = beer.reviews.map(review => review.rating);
-  let averageRating = Math.round(
-    allRatings.reduce((a, b) => a + b) / allRatings.length
-  );
-  switch (averageRating) {
-    case 5:
-      return `&#9733; &#9733; &#9733; &#9733; &#9733;`;
-      break;
-    case 4:
-      return `&#9733; &#9733; &#9733; &#9733; &#9734;`;
-      break;
-    case 3:
-      return `&#9733; &#9733; &#9733; &#9734; &#9734;`;
-      break;
-    case 2:
-      return `&#9733; &#9733; &#9734; &#9734; &#9734; `;
-      break;
-    case 1:
-      return `&#9733; &#9734; &#9734; &#9734; &#9734;`;
-      break;
-    default:
-      return `&#9734; &#9734; &#9734; &#9734; &#9734;`;
+  if (beer.reviews === !null) {
+    let allRatings = beer.reviews.map(review => review.rating);
+    let averageRating = Math.round(
+      allRatings.reduce((a, b) => a + b) / allRatings.length
+    );
+    switch (averageRating) {
+      case 5:
+        return `&#9733; &#9733; &#9733; &#9733; &#9733;`;
+        break;
+      case 4:
+        return `&#9733; &#9733; &#9733; &#9733; &#9734;`;
+        break;
+      case 3:
+        return `&#9733; &#9733; &#9733; &#9734; &#9734;`;
+        break;
+      case 2:
+        return `&#9733; &#9733; &#9734; &#9734; &#9734; `;
+        break;
+      case 1:
+        return `&#9733; &#9734; &#9734; &#9734; &#9734;`;
+        break;
+      default:
+        return `&#9734; &#9734; &#9734; &#9734; &#9734;`;
     }
+  } else {
+    return `&#9734; &#9734; &#9734; &#9734; &#9734;`;
+  }
 }
 
 // render all beers
@@ -279,8 +283,8 @@ function renderBeer(beer) {
   let beerName = document.createElement("h2");
   beerName.innerText = beer.name;
 
-  let beerRating = document.createElement("p")
-  beerRating.innerHTML = beerStars(beer)
+  let beerRating = document.createElement("p");
+  beerRating.innerHTML = beerStars(beer);
 
   let beerNotes = document.createElement("p");
   beerNotes.innerText = `Notes: ${beer.notes}`;
@@ -306,62 +310,62 @@ function renderBeer(beer) {
   closeCard.innerText = "x";
   closeCard.className = "close-card";
   closeCard.addEventListener("click", () => {
-    beerRenderDiv.style.display = "none"
-  })
+    beerRenderDiv.style.display = "none";
+  });
 
-  let hideReviewsBtn = document.createElement('button')
-      hideReviewsBtn.innerText = "Hide Reviews"
-      hideReviewsBtn.style.display = "none"
-      hideReviewsBtn.addEventListener('click', () => {
-        reviewCollection.style.display = "none"
-        hideReviewsBtn.style.display = "none"
-        reviewsBtn.style.display = "block"
-      })
+  let hideReviewsBtn = document.createElement("button");
+  hideReviewsBtn.innerText = "Hide Reviews";
+  hideReviewsBtn.style.display = "none";
+  hideReviewsBtn.addEventListener("click", () => {
+    reviewCollection.style.display = "none";
+    hideReviewsBtn.style.display = "none";
+    reviewsBtn.style.display = "block";
+  });
 
-  let reviewCollection = document.createElement('div')
-      reviewCollection.className = "review-collection"
-      reviewCollection.style.display = "none"
+  let reviewCollection = document.createElement("div");
+  reviewCollection.className = "review-collection";
+  reviewCollection.style.display = "none";
 
-      renderReviews(beer, reviewCollection)
-  
-  let addReviewBtn = document.createElement('button')
-  addReviewBtn.innerText = 'Add Review'
-  addReviewBtn.addEventListener('click', () => {
-    reviewForm.style.display = "block"
-  })
-  reviewCollection.append(addReviewBtn)
+  renderReviews(beer, reviewCollection);
 
-  let reviewForm = document.createElement('form')
-  reviewForm.className = "form-review"
-  reviewForm.style.display = "none"
-  reviewForm.name = beer.id
-  reviewCollection.append(reviewForm)
+  let addReviewBtn = document.createElement("button");
+  addReviewBtn.innerText = "Add Review";
+  addReviewBtn.addEventListener("click", () => {
+    reviewForm.style.display = "block";
+  });
+  reviewCollection.append(addReviewBtn);
 
-  let p = document.createElement('p')
-  p.innerText = "Rating:"
-  p.style.display = "inline-block"
-  
-  let inputRatingReviewForm = document.createElement('input')
-  inputRatingReviewForm.type = "number"
-  inputRatingReviewForm.max = "5"
-  inputRatingReviewForm.min = "0"
-  inputRatingReviewForm.step = "1"
-  inputRatingReviewForm.placeholder = "0"
-  inputRatingReviewForm.style.display = "inline-block"
+  let reviewForm = document.createElement("form");
+  reviewForm.className = "form-review";
+  reviewForm.style.display = "none";
+  reviewForm.name = beer.id;
+  reviewCollection.append(reviewForm);
 
-  let p2 = document.createElement('p')
-  p2.innerText = "Review:"
+  let p = document.createElement("p");
+  p.innerText = "Rating:";
+  p.style.display = "inline-block";
 
-  let inputTextReviewForm = document.createElement('textarea')
-  inputTextReviewForm.rows = "5"
-  inputTextReviewForm.cols = "68"
-  inputTextReviewForm.placeholder = `Review ${beer.name}...`
+  let inputRatingReviewForm = document.createElement("input");
+  inputRatingReviewForm.type = "number";
+  inputRatingReviewForm.max = "5";
+  inputRatingReviewForm.min = "0";
+  inputRatingReviewForm.step = "1";
+  inputRatingReviewForm.placeholder = "0";
+  inputRatingReviewForm.style.display = "inline-block";
 
-  let submitReviewBtn = document.createElement('button')
-  submitReviewBtn.innerText = "Submit"
-  submitReviewBtn.style.display = "Block"
-  reviewForm.addEventListener("submit", postReview)
-  
+  let p2 = document.createElement("p");
+  p2.innerText = "Review:";
+
+  let inputTextReviewForm = document.createElement("textarea");
+  inputTextReviewForm.rows = "5";
+  inputTextReviewForm.cols = "68";
+  inputTextReviewForm.placeholder = `Review ${beer.name}...`;
+
+  let submitReviewBtn = document.createElement("button");
+  submitReviewBtn.innerText = "Submit";
+  submitReviewBtn.style.display = "Block";
+  reviewForm.addEventListener("submit", postReview);
+
   function postReview(e) {
     e.preventDefault();
     const target = e.target;
@@ -381,24 +385,24 @@ function renderBeer(beer) {
       });
   }
 
-  function renderReview (review, reviewCollection) {
-    let reviewCard = document.createElement('div')
-    reviewCard.className = "review-card"
-    let reviewImageDiv = document.createElement('div')
-    let reviewImg = document.createElement('img')
-      reviewImg.src = "https://i.imgur.com/klpkZ5N.png"
-      reviewImg.className = "review-image-single-render"
-      reviewImageDiv.append(reviewImg)
-    let rating = document.createElement('P')
-    rating.innerHTML = reviewStar(review.rating)
-    let pReview = document.createElement('p')
-    pReview.className = "review-content"
-    pReview.innerText = `Review: ${review.review_content}`
-    let user = document.createElement('p')
-    user.innerText = `By ${review.username}`
-    user.className = "review-by-user"
-    reviewCard.append(reviewImageDiv, rating, pReview, user)
-    reviewCollection.prepend(reviewCard)
+  function renderReview(review, reviewCollection) {
+    let reviewCard = document.createElement("div");
+    reviewCard.className = "review-card";
+    let reviewImageDiv = document.createElement("div");
+    let reviewImg = document.createElement("img");
+    reviewImg.src = "https://i.imgur.com/klpkZ5N.png";
+    reviewImg.className = "review-image-single-render";
+    reviewImageDiv.append(reviewImg);
+    let rating = document.createElement("P");
+    rating.innerHTML = reviewStar(review.rating);
+    let pReview = document.createElement("p");
+    pReview.className = "review-content";
+    pReview.innerText = `Review: ${review.review_content}`;
+    let user = document.createElement("p");
+    user.innerText = `By ${review.username}`;
+    user.className = "review-by-user";
+    reviewCard.append(reviewImageDiv, rating, pReview, user);
+    reviewCollection.prepend(reviewCard);
   }
 
   function reviewStar(rating) {
@@ -421,8 +425,7 @@ function renderBeer(beer) {
       default:
         return `&#9734; &#9734; &#9734; &#9734; &#9734;`;
     }
-  };
-
+  }
 
   function renderReviews(beer, reviewCollection) {
     beer.reviews.forEach(review => renderReview(review, reviewCollection));
@@ -520,6 +523,8 @@ function postBeer(e) {
     .then(beer => {
       makeBeerCard(beer);
       addBeerForm.reset();
+      beerForm.style.display = "none";
+      window.scrollTo(0, document.body.scrollHeight);
     });
 }
 

@@ -15,7 +15,7 @@ class BeersController < ApplicationController
       beers << beer
     end
     # reviews = Review.all.map {|review| review = add_username_to_review(review)}
-    render json: beers
+    render json: beers.reverse
     #   {
     #     :reviews => { 
     #       except: [ :created_at, :updated_at]

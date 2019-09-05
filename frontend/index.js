@@ -524,7 +524,6 @@ function postBeer(e) {
       makeBeerCard(beer);
       addBeerForm.reset();
       beerForm.style.display = "none";
-      window.scrollTo(0, document.body.scrollHeight);
     });
 }
 

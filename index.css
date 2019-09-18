@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  padding: 10px;
+  font-family: monospace;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  padding-bottom: 6rem;
+  font-family: "Roboto", arial, sans-serif;
+}
+
+#video-collection {
+  margin: 2rem;
+}
+
+.card {
+  display: inline-block;
+  vertical-align: top;
+  white-space: normal;
+  margin: 0px 16px 40px;
+  width: 359.98px;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card-details {
+  padding-right: 24px;
+  display: inline-block;
+}
+
+.video-avatar {
+  padding: 0px;
+  padding-top: 10px;
+  margin: 0px;
+  width: 100%;
+}
+
+.video-title {
+  margin: 0px;
+  font-size: 16px;
+  color: #0d0d0d;
+  font-weight: bold;
+}
+
+.channel-name-home {
+  color: #606060;
+  font-size: 14px;
+  margin-block-start: 2px;
+  margin-block-end: 0px;
+}
+
+.details-home {
+  color: #606060;
+  font-size: 14px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.channel-avatar-wrapper {
+  width: 48px;
+  display: inline-block;
+}
+
+.channel-avatar {
+  width: 36px;
+  height: 36px;
+}

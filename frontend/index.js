@@ -26,6 +26,7 @@ const allBeersBtn = document.getElementById("all-beers-btn");
 //// welcome and logout
 const welcome = document.getElementById("welcome");
 const logout = document.getElementById("logout-btn");
+/// hello
 
 function greeting() {
   currentUser === !null;
